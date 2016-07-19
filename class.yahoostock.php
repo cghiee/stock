@@ -71,3 +71,4 @@ class YahooStock {
         return $result;
     }
 } 
+?>
