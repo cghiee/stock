@@ -6,43 +6,31 @@
     </head>
     <body>
       <p> hi there with php included</p>
-    
-    <?php
-include_once('class.yahoostock.php');
- 
-$objYahooStock = new YahooStock;
- 
 
-$objYahooStock->addFormat("snl1d1t1cv"); 
+<?php
+    // Setup Variables
+$stockList = "GOOG,YHOO,T,AAPL";
+$stockFormat = "snl1d1t1c1hgw";
+$host = "http://quote.yahoo.com/d/quotes.csv";
+$requestUrl = $host."?s=".$stockList."&amp;amp;amp;amp;f=".$stockFormat."&amp;amp;amp;amp;e=.csv";
  
-
-$objYahooStock->addStock("msft");
-$objYahooStock->addStock("amzn");
-$objYahooStock->addStock("yhoo");
-$objYahooStock->addStock("goog"); 
-$objYahooStock->addStock("vgz"); 
+// Pull data (download CSV as file)
+$filesize=2000;
+$handle = fopen($requestUrl, "r");
+$raw = fread($handle, $filesize);
+fclose($handle);
  
-
-foreach( $objYahooStock->getQuotes() as $code => $stock)
-{
- ?>
- Code: <?php echo $stock[0]; ?> <br />
- Name: <?php echo $stock[1]; ?> <br />
- Last Trade Price: <?php echo $stock[2]; ?> <br />
- Last Trade Date: <?php echo $stock[3]; ?> <br />
- Last Trade Time: <?php echo $stock[4]; ?> <br />
- Change and Percent Change: <?php echo $stock[5]; ?> <br />
- Volume: <?php echo $stock[6]; ?> <br /><br />
- <?php
+// Split results, trim way the extra line break at the end
+$quotes = explode("\n",trim($raw));
+ 
+foreach($quotes as $quoteraw) {
+$quoteraw = str_replace(", I", " I", $quoteraw);
+$quote = explode(",", $quoteraw);
+ 
+echo $quote[0]."
+"; // output the first element of the array, the Company Name
 }
 ?>
-
-    
-    
-    
-    
-    
-    
     
     
     
