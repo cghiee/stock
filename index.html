@@ -12,7 +12,7 @@ include_once('class.yahoostock.php');
  
 $objYahooStock = new YahooStock;
  
-/**
+/*
  Add format/parameters to be fetched
  
  s = Symbol
@@ -25,7 +25,7 @@ $objYahooStock = new YahooStock;
  */
 $objYahooStock->addFormat("snl1d1t1cv"); 
  
-/**
+/*
  Add company stock code to be fetched
  
  msft = Microsoft
@@ -40,7 +40,7 @@ $objYahooStock->addStock("yhoo");
 $objYahooStock->addStock("goog"); 
 $objYahooStock->addStock("vgz"); 
  
-/**
+/*
  * Printing out the data
  */
 foreach( $objYahooStock->getQuotes() as $code => $stock)
