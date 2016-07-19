@@ -33,8 +33,6 @@ echo $quote[0]."
 
 ?>
 
-
-    </body>
         <table>
 <tr>
 <?php $fp = fopen ("http://finance.yahoo.com/d/quotes.csv?s=VIP&f=l1c1p2rj1&e=.csv","r");
@@ -48,4 +46,8 @@ echo $quote[0]."
 <td><?php echo $data[5] ?></td>
 </tr>
 </table>
+
+
+    </body>
+
 </html>
