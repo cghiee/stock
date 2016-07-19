@@ -32,6 +32,19 @@ echo $quote[0]."
 }
 
 ?>
-    
+    <table>
+<tr>
+<?php $fp = fopen ("http://finance.yahoo.com/d/quotes.csv?s=VIP&f=l1c1p2rj1&e=.csv","r");
+        $data = fgetcsv ($fp, 1000, ",") ?>
+<td>Vimpel-Communications</td>
+<td><?php echo $data[0] ?></td>
+<td><?php echo $data[1] ?></td>
+<td><?php echo $data[2] ?></td>
+<td><?php echo $data[3] ?></td>
+<td><?php echo $data[4] ?></td>
+<td><?php echo $data[5] ?></td>
+</tr>
+</table>
+
     </body>
 </html>
